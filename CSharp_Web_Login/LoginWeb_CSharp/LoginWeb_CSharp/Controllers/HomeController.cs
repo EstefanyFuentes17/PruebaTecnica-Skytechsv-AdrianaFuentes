@@ -10,19 +10,17 @@ namespace LoginWeb_CSharp.Controllers
     {
         public ActionResult Index()
         {
-            return View();
-        }
+            if (Session["UserID"] == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
+            Response.Cache.SetCacheability(HttpCacheability.NoCache);
+            Response.Cache.AppendCacheExtension("no-store, must-revalidate");
+            Response.Cache.SetExpires(DateTime.UtcNow.AddDays(-1));
+            Response.Cache.SetNoStore();
 
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.NombreUsuario = Session["UserName"] ?? "Invitado";
 
             return View();
         }

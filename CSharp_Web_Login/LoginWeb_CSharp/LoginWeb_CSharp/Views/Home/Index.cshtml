@@ -1,33 +1,48 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    Layout = null;
+    ViewBag.Title = "Bienvenida";
 }
 
-<main>
-    <section class="row" aria-labelledby="aspnetTitle">
-        <h1 id="title">ASP.NET</h1>
-        <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-        <p><a href="https://asp.net" class="btn btn-primary btn-md">Learn more &raquo;</a></p>
-    </section>
+<link href="~/Content/css/login.css" rel="stylesheet" />
 
-    <div class="row">
-        <section class="col-md-4" aria-labelledby="gettingStartedTitle">
-            <h2 id="gettingStartedTitle">Getting started</h2>
-            <p>
-                ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-                enables a clean separation of concerns and gives you full control over markup
-                for enjoyable, agile development.
-            </p>
-            <p><a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-        </section>
-        <section class="col-md-4" aria-labelledby="librariesTitle">
-            <h2 id="librariesTitle">Get more libraries</h2>
-            <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-            <p><a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-        </section>
-        <section class="col-md-4" aria-labelledby="hostingTitle">
-            <h2 id="hostingTitle">Web Hosting</h2>
-            <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-            <p><a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-        </section>
+<div class="login-container">
+    <div class="login-card" style="width: 500px; text-align: center;">
+
+        <div class="login-header">
+            <h2>¡Entrada Concedida!</h2>
+        </div>
+
+        <div class="login-body">
+            <div style="display: inline-block; width: 100%;">
+                <h1 style="color: #4b3d8b; font-family: 'Georgia', serif;">
+                    Bienvenido, @ViewBag.NombreUsuario
+                </h1>
+
+                <p style="color: #666;">
+                    El sistema confirma que el login funciona perfectamente.
+                </p>
+                <div style="margin: 20px auto; padding: 15px; border: 2px dashed #dcd0ff; border-radius: 12px; width: 80%; color: #4b3d8b;">
+                    <strong>Estado de Conexión:</strong> Base de Datos vinculada con éxito.
+                </div>
+
+                <br />
+                <a href="@Url.Action("Logout", "Account")" style="text-decoration: none; display: block; margin: 0 auto;">
+                    Cerrar Sesión
+                </a>
+            </div>
+        </div>
     </div>
-</main>
+</div>
+
+<script type="text/javascript">
+    window.history.forward();
+    function noBack() {
+        window.history.forward();
+    }
+    var userSession = '@Session["UserID"]';
+    if (userSession == null || userSession == "") {
+        window.location.href = '@Url.Action("Login", "Account")';
+    }
+</script>
+
+<body onload="noBack();" onpageshow="if (event.persisted) noBack();" onunload="">
