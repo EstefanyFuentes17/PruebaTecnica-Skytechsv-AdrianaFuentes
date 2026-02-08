@@ -18,7 +18,7 @@ Toda la lógica pesada de datos no reside en la aplicación, sino en la base de 
 
 /CSharp_Web_Login: Proyecto web de autenticación.
 
-/SQL_Scripts: Scripts de creación de tablas y lógica de base de datos.
+/SQL_Scripts: Script de creación de tabla y lógica de base de datos.
 
 🛠️ Pasos para la Puesta en Marcha
 
