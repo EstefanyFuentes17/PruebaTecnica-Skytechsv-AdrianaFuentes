@@ -58,11 +58,14 @@ GO
 
 -- B. LISTAR USUARIOS (VB.NET CRUD)
 CREATE OR ALTER PROCEDURE sp_ListarUsuarios
+    @Filtro VARCHAR(100) = ''
 AS
 BEGIN
     SET NOCOUNT ON;
-    SELECT Id, Username, NombreCompleto, Estado, FechaCreacion 
-    FROM Usuarios ORDER BY FechaCreacion DESC;
+    SELECT Id, Username, NombreCompleto, Password, Estado, FechaCreacion 
+    FROM Usuarios 
+    WHERE (Username LIKE '%' + @Filtro + '%' OR NombreCompleto LIKE '%' + @Filtro + '%')
+    ORDER BY FechaCreacion DESC;
 END
 GO
 
@@ -98,6 +101,7 @@ CREATE OR ALTER PROCEDURE sp_ActualizarUsuario
     @Id INT,
     @Username VARCHAR(50),
     @NombreCompleto VARCHAR(100),
+	@Password VARCHAR(100),
     @Estado BIT
 AS
 BEGIN
@@ -111,6 +115,7 @@ BEGIN
         UPDATE Usuarios 
         SET Username = @Username, 
             NombreCompleto = @NombreCompleto, 
+			Password = @Password,
             Estado = @Estado
         WHERE Id = @Id;
     END TRY
