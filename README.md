@@ -45,7 +45,6 @@ CRUD Desktop: Abre el .sln en Visual Studio y presiona F5. Puedes crear usuarios
 Login Web: Ejecuta el proyecto web para probar la validación de las cuentas creadas.
 
 ✨ Características Destacadas
-Interfaz Personalizada: Diseñada con una estética moderna, utilizando tonos lila y oscuros para mejorar la experiencia visual.
 
 Búsqueda Dinámica: Filtra usuarios por nombre o username mientras escribes.
 
