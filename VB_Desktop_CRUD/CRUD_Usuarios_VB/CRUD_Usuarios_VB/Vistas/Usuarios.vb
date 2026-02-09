@@ -131,4 +131,8 @@
         Next
     End Sub
 
+    Private Sub picVerPass_Click(sender As Object, e As EventArgs) Handles picVerPass.Click
+        txtPassword.UseSystemPasswordChar = Not txtPassword.UseSystemPasswordChar
+
+    End Sub
 End Class
